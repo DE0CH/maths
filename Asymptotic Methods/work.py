@@ -51,7 +51,7 @@ i = Integral(exp(x*(1-t**2/2))*f, (t, 0, pi/2))
 i
 
 # %%
-i = Integral(exp(x*(1-t**2/2))*f.series(t, 0, 4).removeO(), (t, 0, pi/2))
+i = Integral(exp(x*(1-t**2/2))*f.series(t, 0, 10).removeO(), (t, 0, pi/2))
 
 # %%
 i
