@@ -158,15 +158,15 @@ Bv = Symbol('C2')
 # Because this is different from C1 used in Av
 
 # %%
-z = y0v.subs(Function('A')(T1), Av).subs(Function('B')(T1), Bv).subs(T0, T0v).subs(T1, T1v)
+z = y0v.subs(Function('A')(T1), Av).subs(Function('B')(T1), Bv)
 z
 
 # %%
-zz = y0v.subs(Function('A')(T1), Av).subs(Function('B')(T1), Bv).subs(T0, T0v).subs(T1, T1v).diff(t)
+zz = y0v.subs(Function('A')(T1), Av).subs(Function('B')(T1), Bv).diff(T0)
 zz
 
 # %%
-sim_eq = (Eq(z.subs(t, 0), a), Eq(zz.subs(t, 0), 0))
+sim_eq = (Eq(z.subs(T0, 0).subs(T1, 0), a), Eq(zz.subs(T0, 0).subs(T1, 0), 0))
 
 # %%
 sim_eq[0]
@@ -177,5 +177,8 @@ sim_eq[1]
 # %%
 sols = solve(sim_eq, (Symbol('C1'), Symbol('C2')))
 sols
+
+# %%
+solve(sim_eq[0].subs(Symbol('C2'), 0), Symbol('C1'))[0]
 
 # %%
