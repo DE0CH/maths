@@ -105,10 +105,14 @@ result, error = dblquad(
     x_lower, x_upper,  # x integration limits
     epsabs=1e-11, epsrel=1e-11  # Absolute and relative tolerance
 )
-result
+result * 4
 
 # %%
 result = integrate(ans, (x, y, 1-y), (y, 0, 0.5))
 result
+
+# %%
+final = result.doit()
+final
 
 # %%
